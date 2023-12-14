@@ -1,9 +1,12 @@
-import logo from './logo.svg';
+
+//Import Area
 import './App.css';
 import LeftComponent from './Components/LeftComponent';
 import RightComponent from './Components/RightComponent';
 import FooterComponent from './Components/FooterComponent';
 
+
+//Function Defination Area
 function App() {
   return (
     /* Main Container */
@@ -19,4 +22,6 @@ function App() {
   );
 }
 
+
+//Export Area
 export default App;
