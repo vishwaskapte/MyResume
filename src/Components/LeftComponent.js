@@ -1,5 +1,9 @@
-import React from 'react'
 
+//Import Area
+import LanguagesComponent from './LanguagesComponent'
+import SkillsComponent from './SkillsComponent'
+
+//Function Defination Area
 export default function LeftComponent() {
   return (
         <div class="w3-third">
@@ -18,41 +22,37 @@ export default function LeftComponent() {
                 <hr />
       
                 <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-                <p>Adobe Photoshop</p>
-                <div class="w3-light-grey w3-round-xlarge w3-small">
-                  <div class="w3-container w3-center w3-round-xlarge w3-teal" style = {{"width":"90%"}}>90%</div>
-                </div>
-                <p>Photography</p>
-                <div class="w3-light-grey w3-round-xlarge w3-small">
-                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style = {{"width":"80%"}}>80%</div>
-                </div>
-                <p>Illustrator</p>
-                <div class="w3-light-grey w3-round-xlarge w3-small">
-                  <div class="w3-container w3-center w3-round-xlarge w3-teal" style = {{"width":"75%"}}>75%</div>
-                </div>
-                <p>Media</p>
-                <div class="w3-light-grey w3-round-xlarge w3-small">
-                  <div class="w3-container w3-center w3-round-xlarge w3-teal" style = {{"width":"50%"}}>50%</div>
-                </div>
+                <SkillsComponent 
+                    skill = 'Adobe Photoshop'
+                    percent = '90%'
+                />
+                <SkillsComponent 
+                    skill = 'Photography'
+                    percent = '80%'
+                />
+                <SkillsComponent 
+                    skill = 'Illustrator'
+                    percent = '75%'
+                />
+                <SkillsComponent 
+                    skill = 'Media'
+                    percent = '50%'
+                />
                 <br />
       
                 <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal" ></i>Languages</b></p>
-                <p>English</p>
-                <div class="w3-light-grey w3-round-xlarge">
-                  <div class="w3-round-xlarge w3-teal" ></div>
-                </div>
-                <p>Spanish</p>
-                <div class="w3-light-grey w3-round-xlarge">
-                  <div class="w3-round-xlarge w3-teal" ></div>
-                </div>
-                <p>German</p>
-                <div class="w3-light-grey w3-round-xlarge">
-                  <div class="w3-round-xlarge w3-teal" ></div>
-                </div>
+                <LanguagesComponent 
+                  name='English'
+                />
+                <LanguagesComponent 
+                  name='Spanish'
+                />
+                <LanguagesComponent 
+                  name='German'
+                />
                 <br />
               </div>
             </div><br />
- 
         </div>
   )
 }
