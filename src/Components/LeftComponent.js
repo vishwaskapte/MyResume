@@ -1,70 +1,106 @@
+// Import Area
+import React from 'react';
+import PropTypes from 'prop-types';
+import LanguagesComponent from './LanguagesComponent';
+import SkillsComponent from './SkillsComponent';
+import StrengthComponent from './StrengthComponent';
 
-//Import Area
-import LanguagesComponent from './LanguagesComponent'
-import SkillsComponent from './SkillsComponent'
-import StrengthComponent from './StrengthComponent'
-
-//Function Defination Area
-export default function LeftComponent() {
+// Function Definition Area
+export default function LeftComponent({ personalInfo, skills, languages, strengths }) {
   return (
-    <div class="w3-third">
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
+    <aside className="sidebar">
+      <div className="profile-section">
+        <h2 className="profile-title">{personalInfo.title}</h2>
+        <div className="contact-info">
+          <div className="contact-item">
+            <i className="fa fa-briefcase" aria-hidden="true"></i>
+            <span>{personalInfo.title}</span>
+          </div>
+          <div className="contact-item">
+            <i className="fa fa-home" aria-hidden="true"></i>
+            <span>{personalInfo.location}</span>
+          </div>
+          <div className="contact-item">
+            <i className="fa fa-envelope" aria-hidden="true"></i>
+            <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>
+          </div>
+          <div className="contact-item">
+            <i className="fa fa-phone" aria-hidden="true"></i>
+            <a href={`tel:${personalInfo.phone.replace(/\s/g, '')}`}>{personalInfo.phone}</a>
+          </div>
         </div>
-        <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Software Developer</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i> Pune, India </p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>abc@gmail.com</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>+91 985425635256</p>
-          <hr />
+      </div>
 
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+      <div className="section">
+        <h3 className="section-title">
+          <i className="fa fa-asterisk" aria-hidden="true"></i>
+          Skills
+        </h3>
+        {skills.map((skillItem, index) => (
           <SkillsComponent
-            skill='Adobe Photoshop'
-            percent='90%'
+            key={index}
+            skill={skillItem.skill}
+            percent={skillItem.percent}
           />
-          <SkillsComponent
-            skill='Photography'
-            percent='80%'
-          />
-          <SkillsComponent
-            skill='Illustrator'
-            percent='75%'
-          />
-          <SkillsComponent
-            skill='Media'
-            percent='50%'
-          />
-          <br />
+        ))}
+      </div>
 
-          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal" ></i>Languages</b></p>
+      <div className="section">
+        <h3 className="section-title">
+          <i className="fa fa-globe" aria-hidden="true"></i>
+          Languages
+        </h3>
+        {languages.map((language, index) => (
           <LanguagesComponent
-            name='English'
+            key={index}
+            name={language.name}
+            proficiency={language.proficiency}
           />
-          <LanguagesComponent
-            name='Spanish'
-          />
-          <LanguagesComponent
-            name='German'
-          />
-          <br />
+        ))}
+      </div>
 
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Strengths</b></p>
+      <div className="section">
+        <h3 className="section-title">
+          <i className="fa fa-star" aria-hidden="true"></i>
+          Strengths
+        </h3>
+        {strengths.map((strength, index) => (
           <StrengthComponent
-            name='Problem Solving'
-            description='Developed solutions for complex problems resulting in a 30% increase in efficiency'
+            key={index}
+            name={strength.name}
+            description={strength.description}
           />
-          <StrengthComponent
-            name='Teamwork'
-            description='Collaborated with cross-functional teams resulting in successful project completion within deadline'
-          />
-          <StrengthComponent
-            name='Attention to Detail'
-            description='Implemented rigorous testing methodologies resulting in 99% bug-free code'
-          />
-          <br />
-        </div>
-      </div><br />
-    </div>
-  )
+        ))}
+      </div>
+    </aside>
+  );
 }
+
+// PropTypes
+LeftComponent.propTypes = {
+  personalInfo: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired
+  }).isRequired,
+  skills: PropTypes.arrayOf(
+    PropTypes.shape({
+      skill: PropTypes.string.isRequired,
+      percent: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  languages: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      proficiency: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  strengths: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired
+    })
+  ).isRequired
+};

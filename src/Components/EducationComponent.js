@@ -1,12 +1,22 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function EducationComponent(props) {
+export default function EducationComponent({ college, degree, from, to }) {
   return (
-        <div class="w3-container">
-                <h5 class="w3-opacity"><b>{props.college}</b></h5>
-                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{props.from} {props.to}</h6>
-                <p>{props.degree}</p>
-                <hr />
-        </div>
-  )
+    <div className="education-item">
+      <h3 className="education-college">{college}</h3>
+      <p className="education-degree">{degree}</p>
+      <div className="education-period">
+        <i className="fa fa-calendar" aria-hidden="true"></i>
+        <span>{from} {to}</span>
+      </div>
+    </div>
+  );
 }
+
+EducationComponent.propTypes = {
+  college: PropTypes.string.isRequired,
+  degree: PropTypes.string.isRequired,
+  from: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired
+};
